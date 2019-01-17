@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="123">
+    <input type="button" value="turnOn" onclick=turnOn()>
+    <input type="button" value="turnOff" onclick=turnOff()>
+</div>
+<script>
+    function turnOn() {
+        switchbutton.switchOn();
+        electriclamp.light();
+    }
+
+    function turnOff() {
+        switchbutton.switchOff();
+        electriclamp.light();
+    }
+
+    var ElectricLamp = function () {
+        this.turnOff = function () {
+            this.status = false;
+        };
+        this.turnOn = function () {
+            this.status = true;
+        };
+        this.light = function () {
+            if (this.status === true) {
+                alert("light")
+            } else {
+                alert("not light")
+            }
+        }
+    };
+    var SwitchButton = function (electriclamp) {
+        this.switchOn = function () {
+            electriclamp.turnOn()
+        };
+        this.switchOff = function () {
+            electriclamp.turnOff()
+        }
+    };
+    var electriclamp = new ElectricLamp();
+    var switchbutton = new SwitchButton(electriclamp);
+
+</script>
+</body>
+</html>
